@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Trabalho 2 - Detran </title>
+
+   
+</head>
+<body>
+    <center>
+        <h1> Velocidade da via </h1>
+        <input type="number" id="kmvia">
+
+        <h1> Velocidade do veículo </h1>
+        <input type="number" id="kmveiculo">
+
+        <div id="mostrar"></div>
+
+        <button id="sub"> Calcular </button>
+        <br>
+        <br>
+        <br>
+
+            <div class="container" id="condutor">
+                Caso queira transferir a pontuaçao para a CNH do condutor:
+                <br>
+
+                Digite o nome completo do condutor:
+                <input type="text" name="name"  placeholder="Nome do condutor"/>
+                <br>
+        
+                Digite o número da carteira CNH do condutor:
+                <input type="number" name="name"  placeholder="CNH"/>
+                <br>
+
+                <button id="enviar">Enviar</button>
+
+            </div>
+    </center>
+    <script>     
+
+        let btn = document.querySelector('#sub');
+        btn.addEventListener('click', calcular);
+
+
+        function calcular(){
+            let via = Number(kmvia.value)
+            let carro = Number(kmveiculo.value)
+
+            if(carro < via){
+                mostrar.innerHTML = 'Você atende os requisitos da via!'
+            }
+
+            if((carro > via) && (carro <= via + 7)){
+                mostrar.innerHTML = 'Advertência'
+            }
+
+            if((carro > via + 7) && (carro <= via + via * 0.20)){
+                mostrar.innerHTML = 'Atuação: Infração Media <br> Multa: R$130,16 <br> Pontos CNH: 4'
+            }
+
+            if((carro > via + via * 0.20) && (carro <= via + via * 0.50)){
+                mostrar.innerHTML = 'Atuação: Infração Grave <br> Multa: R$195,23 <br> Pontos CNH: 5'
+            }
+ 
+            if(carro > via + via * 0.50){
+                mostrar.innerHTML = 'Atuação: Infração Gravíssima. <br> Multa: R$880,41 <br> Penalidade de suspensão do direito de dirigir.'
+            }
+            
+        }
+    </script>
+
+</body>
+</html>
